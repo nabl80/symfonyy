@@ -1,0 +1,33 @@
+{% extends 'menu.base.html.twig' %}
+
+{% block title %}New News{% endblock %}
+
+{% block body %}
+    <h1>New message</h1>
+
+    {# #}{# {{ include('news/_form.html.twig') }} #}
+    {# <div class="agentContactForm" id="agentContactForm"> #}
+    {# <!--    <div class="container">--> #}
+    {# <!--        <div class="col-md-6 col-sm-6 agentContactForm">--> #}
+    {# <div class="agentBlock" id="agentForm"> #}
+    {# <!--            <div class="container">--> #}
+    {# <div class="col-md-6 col-sm-6 agentBlock"> #}
+    {# <h4>New message</h4> #}
+    <form action="connectMessage.php" method="post">
+
+
+        <input type="text" name="image" placeholder="IMAGE"><br>
+        <input type="text" name="name" placeholder="MESSAGE NAME"><br>
+        {# <textarea rows="4" cols="50" id="basic-example" name="text"></textarea><br> #}
+        <textarea rows="2" cols="100" id="basic-example" name="text" placeholder="ENTER YOUR TEXT">
+</textarea>
+        <input type="submit" class="hvr-rectangle-in" value="SEND">
+    </form>
+    <div class="clearfix"></div>
+    </div>
+
+
+    <a href="{{ path('news_index') }}">back to list</a>
+{% endblock %}
+
+

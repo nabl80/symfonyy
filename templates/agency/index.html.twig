@@ -1,0 +1,49 @@
+{% extends 'menu.base.html.twig' %}
+
+{% block title %}Agency index{% endblock %}
+
+{% block body %}
+    <h1>Agency index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Agency</th>
+            <th>Website</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for agency in agencies %}
+            <tr>
+                <td>{{ agency.id }}</td>
+                <td>{{ agency.name }}</td>
+                <td>{{ agency.surname }}</td>
+                <td>{{ agency.agency }}</td>
+                <td>{{ agency.website }}</td>
+                <td>{{ agency.country }}</td>
+                <td>{{ agency.email }}</td>
+                <td>{{ agency.password }}</td>
+
+
+                <td>
+                    <a href="{{ path('agency_show', {'id': agency.id}) }}">show</a>
+                    <a href="{{ path('agency_edit', {'id': agency.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('agency_new') }}">Create new</a>
+{% endblock %}

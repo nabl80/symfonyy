@@ -1,0 +1,92 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+}
+
+footer{
+    background-color: #122b40;
+    width:100%;
+    height: 100%;
+
+}
+
+.banner-body-main {
+    background: url('../images/banner2.jpg') no-repeat 0px 0px;
+    background-size: cover;
+    min-height: 799px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Merienda', cursive;
+}
+
+.header-w3l {
+    padding: 20px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.banner {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.banner-text h2 {
+    color: #fff;
+    background-color: rgba(205, 220, 57, 0.69);
+    padding: 10px 20px;
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.agentBlock{
+    padding: 50px 100px 100pt;
+    background: url('../images/3.jpg') no-repeat 0px 0px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*.propertyLogin{*/
+/*    padding: 50px 100px 100pt;*/
+/*    background: url('../images/3.jpg') no-repeat 0px 0px;*/
+/*    background-size: cover;*/
+/*    background-attachment: fixed;*/
+/*}*/
+
+.loginForm {
+    border: 1px solid #eee;
+    padding: 30px;
+    width: 47.5%;
+}
+
+#newAgent, #newProperty, #switchToAgency, #switchToProperty {
+    color: black;
+}
+
+.agentPropertyChoise {
+    padding: 0px 0px;
+    background: url('../images/3.jpg') no-repeat 0px 0px;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    height: 400pt;
+}
+
+.card-deck{
+    display: flex;
+}
+
+#card1, #card2, #card3{
+    background: url("../images/15.jpg");
+    width: 100%;
+}
+
+
+
