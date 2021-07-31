@@ -38,6 +38,22 @@ class Property
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $contactname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $contactemail;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+
 
 
     public function getId(): ?int
@@ -56,18 +72,6 @@ class Property
 
         return $this;
     }
-
-//    public function getProperty(): ?User
-//    {
-//        return $this->property;
-//    }
-//
-//    public function setProperty(User $property): self
-//    {
-//        $this->property = $property;
-//
-//        return $this;
-//    }
 
     public function getEmail(): ?string
     {
@@ -109,4 +113,41 @@ class Property
     {
         return $this->name;
     }
+
+    public function getContactname(): ?string
+    {
+        return $this->contactname;
+    }
+
+    public function setContactname(?string $contactname): self
+    {
+        $this->contactname = $contactname;
+
+        return $this;
+    }
+
+    public function getContactemail(): ?string
+    {
+        return $this->contactemail;
+    }
+
+    public function setContactemail(string $contactemail): self
+    {
+        $this->contactemail = $contactemail;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
 }

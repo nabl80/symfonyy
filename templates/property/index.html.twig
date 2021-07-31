@@ -13,6 +13,9 @@
                 <th>Role</th>
                 <th>Email</th>
                 <th>Password</th>
+                <th>Contact Person</th>
+                <th>Contact Email</th>
+                <th>Phone</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +27,9 @@
                 <td>{{ property.role }}</td>
                 <td>{{ property.email }}</td>
                 <td>{{ property.password }}</td>
+                <td>{{ property.contactname }}</td>
+                <td>{{ property.contactemail }}</td>
+                <td>{{ property.phone }}</td>
                 <td>
                     <a href="{{ path('property_show', {'id': property.id}) }}">show</a>
                     <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>
