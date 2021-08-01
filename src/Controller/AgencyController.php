@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Agency;
 use App\Form\AgencyType;
 use App\Repository\AgencyRepository;
+use App\Repository\NewsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,9 +28,10 @@ class AgencyController extends AbstractController
     public function index(AgencyRepository $agencyRepository): Response
     {
         return $this->render('agency/index.html.twig', [
-            'agencies' => $agencyRepository->findAll(),
+                        'agencies' => $agencyRepository->findAll(),
         ]);
     }
+
 
     #[Route('/new', name: 'agency_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
