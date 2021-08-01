@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AgencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=AgencyRepository::class)
  */
@@ -38,12 +39,12 @@ class Agency
     private $website;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=70)
      */
     private $country;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
@@ -51,6 +52,11 @@ class Agency
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
 
 
     public function getId(): ?int
@@ -138,6 +144,18 @@ class Agency
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
