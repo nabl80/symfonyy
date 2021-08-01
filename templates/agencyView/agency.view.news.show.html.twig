@@ -1,0 +1,43 @@
+{% extends 'agency.view.base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+    <h1>News</h1>
+
+    <div class="container">
+        <table class="table">
+            <center><img width="70%" , height="50%" src="{{ news.image }}"></center>
+            <tbody>
+            <tr>
+                <th>Publication Date</th>
+                <td>{{ news.date ? news.date|date('d.m.Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Property</th>
+                <td>{{ news.property }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ news.name }}</td>
+            </tr>
+            <tr>
+                {# <th>Image</th> #}
+                {# <td>{{ news.image }}</td> #}
+
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ news.text }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('news_index') }}">back to list</a>
+    </div>
+{% endblock %}
+{% block footer %}
+<footer>
+    Evgeni Brish. All rights reserved 2021
+</footer>
+{% endblock %}

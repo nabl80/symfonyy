@@ -1,0 +1,11 @@
+{% for item in agency_menu_list.getAgencyMenuList %}
+    <div class="menu_item">
+        {% if item.pathName is not defined %}
+            <a href="/category/{{ item.name }}">{{ item.name }}</a>
+        {% else %}
+            <a href="{{ path(item.pathName) }}">{{ item.name }}</a>
+        {% endif %}
+    </div>
+{% else %}
+    No meniu items found
+{% endfor %}
