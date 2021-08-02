@@ -22,7 +22,6 @@ class Property
      */
     private $name;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -52,9 +51,6 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
-
-
-
 
     public function getId(): ?int
     {
@@ -149,5 +145,4 @@ class Property
 
         return $this;
     }
-
 }

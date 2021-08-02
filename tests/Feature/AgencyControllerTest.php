@@ -2,8 +2,6 @@
 
 namespace App\Tests\Feature;
 
-
-
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class AgencyControllerTest extends WebTestCase
@@ -15,7 +13,5 @@ class AgencyControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Agency index');
-
     }
-   
 }

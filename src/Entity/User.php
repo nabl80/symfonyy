@@ -48,13 +48,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $role;
 
-
     public function __construct()
     {
         $this->role = new ArrayCollection();
         $this->rights = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -68,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string)$this->email;
+        return (string) $this->email;
     }
 
     /**
@@ -76,7 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string)$this->email;
+        return (string) $this->email;
     }
 
     /**
@@ -197,5 +195,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 }

@@ -4,19 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Agency;
 use App\Form\AgencyType;
+use App\Manager\AgencyManager;
 use App\Repository\AgencyRepository;
-use App\Repository\NewsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Manager\AgencyManager;
 
 #[Route('/agency')]
 class AgencyController extends AbstractController
 {
-
-
     /**
      * AgencyController constructor.
      */
@@ -31,7 +28,6 @@ class AgencyController extends AbstractController
                         'agencies' => $agencyRepository->findAll(),
         ]);
     }
-
 
     #[Route('/new', name: 'agency_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
@@ -81,11 +77,10 @@ class AgencyController extends AbstractController
     #[Route('/{id}', name: 'agency_delete', methods: ['POST'])]
     public function delete(Request $request, Agency $agency): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $agency->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$agency->getId(), $request->request->get('_token'))) {
             $this->manager->delete($agency);
         }
 
         return $this->redirectToRoute('agency_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }

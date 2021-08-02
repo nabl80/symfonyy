@@ -5,12 +5,10 @@ namespace App\Manager;
 use App\Entity\TodoItem;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class TodoItemManager
 {
     public function __construct(private EntityManagerInterface $em)
     {
-
     }
 
     public function store(TodoItem $todoItem): void

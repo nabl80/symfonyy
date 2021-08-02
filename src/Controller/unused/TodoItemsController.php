@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class TodoItemsController
 {
@@ -21,7 +21,7 @@ class TodoItemsController
      */
     public function show(int $id)
     {
-        return new Response('Vienas itemas' . $id);
+        return new Response('Vienas itemas'.$id);
     }
 
     /**
@@ -29,7 +29,7 @@ class TodoItemsController
      */
     public function delete(int $id)
     {
-        return new Response('Salinamas itemas' . $id);
+        return new Response('Salinamas itemas'.$id);
     }
 
     /**
@@ -38,7 +38,8 @@ class TodoItemsController
     public function update(int $id, Request $request)
     {
         $data = json_decode($request->getContent(), true);
-        return new Response('Atnaujinamas itemas' . $id . implode(' | ', $data));
+
+        return new Response('Atnaujinamas itemas'.$id.implode(' | ', $data));
     }
 
     /**
@@ -47,6 +48,7 @@ class TodoItemsController
     public function store(Request $request)
     {
         $data = json_decode($request->getContent(), true);
-        return new Response('Kuriamas itemas' . implode(' | ', $data));
+
+        return new Response('Kuriamas itemas'.implode(' | ', $data));
     }
 }

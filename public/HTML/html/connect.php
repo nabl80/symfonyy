@@ -11,7 +11,7 @@ $password = $_POST['password'];
 $conn = new mysqli('localhost', 'devuser', 'devpass', 'csba_db');
 
 if (mysqli_connect_error()) {
-    die('Connect Error (' . mysqli_connect_errno() . ')' . mysqli_connect_error());
+    exit('Connect Error ('.mysqli_connect_errno().')'.mysqli_connect_error());
 } else {
     $hashed = hash('sha512', $password);
     $sql =
@@ -19,11 +19,10 @@ if (mysqli_connect_error()) {
 values ('$name','$surname', '$agency', '$website', '$country', '$email', '$hashed')";
 
     if ($conn->query($sql)) {
-        echo "New record is inserted successfully";
-        header( "refresh:2;url=../index.html" );
-
+        echo 'New record is inserted successfully';
+        header('refresh:2;url=../index.html');
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo 'Error: '.$sql.'<br>'.$conn->error;
     }
     $conn->close();
 }

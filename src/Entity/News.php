@@ -43,6 +43,10 @@ class News
      */
     private $property;
 
+    /**
+     * News constructor.
+     */
+
 
     public function getId(): ?int
     {
@@ -108,6 +112,5 @@ class News
 
         return $this;
     }
-
 
 }

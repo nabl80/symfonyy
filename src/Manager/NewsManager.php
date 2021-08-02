@@ -5,7 +5,6 @@ namespace App\Manager;
 use App\Entity\News;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class NewsManager
 {
     public function __construct(private EntityManagerInterface $em)

@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\AgencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity(repositoryClass=AgencyRepository::class)
  */
@@ -57,7 +56,6 @@ class Agency
      * @ORM\Column(type="string", length=255)
      */
     private $role;
-
 
     public function getId(): ?int
     {
@@ -159,5 +157,4 @@ class Agency
 
         return $this;
     }
-
 }

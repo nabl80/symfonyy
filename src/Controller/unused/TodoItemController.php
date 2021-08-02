@@ -4,28 +4,26 @@ namespace App\Controller;
 
 use App\Entity\TodoItem;
 use App\Form\TodoItemType;
+use App\Manager\TodoItemManager;
 use App\Repository\TodoItemRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Manager\TodoItemManager;
 
 #[Route('/todo/item')]
 class TodoItemController extends AbstractController
 {
-
-
     /**
      * TodoItemController constructor.
      */
     public function __construct(private TodoItemManager $manager)
     {
-
     }
 
     #[Route('/', name: 'todo_item_index', methods: ['GET'])]
+
 //    #[IsGranted('ROLE_ADMIN')]
     public function index(TodoItemRepository $todoItemRepository): Response
     {
@@ -43,7 +41,7 @@ class TodoItemController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-           $this->manager->store($todoItem);
+            $this->manager->store($todoItem);
 
             return $this->redirectToRoute('todo_item_index', [], Response::HTTP_SEE_OTHER);
         }
