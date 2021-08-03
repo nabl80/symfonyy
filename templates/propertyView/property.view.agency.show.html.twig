@@ -1,0 +1,40 @@
+{% extends 'property.view.base.html.twig' %}
+
+{% block title %}Agency{% endblock %}
+
+{% block body %}
+    <h1>Agency</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ agency.name }}</td>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>{{ agency.surname }}</td>
+        </tr>
+        <tr>
+            <th>Agency</th>
+            <td>{{ agency.agency }}</td>
+        </tr>
+        <tr>
+            <th>Website</th>
+            <td>{{ agency.website }}</td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>{{ agency.country }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ agency.email }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('property_view_agencies') }}">back to list</a>
+
+{% endblock %}

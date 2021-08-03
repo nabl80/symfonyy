@@ -1,0 +1,38 @@
+{% extends 'property.view.base.html.twig' %}
+
+{% block title %}Agency index{% endblock %}
+
+{% block body %}
+    <h1>Agency index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Agency</th>
+            <th>Website</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for agency in agencies %}
+            <tr>
+                <td>{{ agency.name }}</td>
+                <td>{{ agency.surname }}</td>
+                <td>{{ agency.agency }}</td>
+                <td>{{ agency.website }}</td>
+                <td>{{ agency.country }}</td>
+                <td>{{ agency.email }}</td>
+
+                <td>
+                    <a href="{{ path('property_view_agency_id', {'id': agency.id}) }}">show</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

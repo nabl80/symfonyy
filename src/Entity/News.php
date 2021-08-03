@@ -37,18 +37,7 @@ class News
      */
     private $text;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Property::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $property;
-
-    /**
-     * News constructor.
-     */
-
-
-    public function getId(): ?int
+     public function getId(): ?int
     {
         return $this->id;
     }
@@ -101,16 +90,18 @@ class News
         return $this;
     }
 
-    public function getProperty(): ?Property
-    {
-        return $this->property;
-    }
+//    public function getProperty(): ?Property
+//    {
+//        return $this->property;
+//    }
+//
+//    public function setProperty(?Property $property): self
+//    {
+//        $this->property = $property;
+//
+//        return $this;
+//    }
 
-    public function setProperty(?Property $property): self
-    {
-        $this->property = $property;
 
-        return $this;
-    }
 
 }

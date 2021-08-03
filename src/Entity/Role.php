@@ -30,11 +30,6 @@ class Role
     private $roleName;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $status;
-
-    /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="role")
      */
     private $users;

@@ -21,10 +21,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
 
     /**
      * @var string The hashed password
@@ -48,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $role;
 
-    public function __construct()
+     public function __construct()
     {
         $this->role = new ArrayCollection();
         $this->rights = new ArrayCollection();
@@ -195,4 +191,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
 }

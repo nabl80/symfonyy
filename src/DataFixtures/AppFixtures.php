@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
             $agency->setAgency($faker->company);
             $agency->setWebsite($faker->url);
             $agency->setPassword($hashed);
-            $agency->setRole('ROLE_AGENCY');
+            $agency->setRole('6');
             $manager->persist($agency);
         }
 
@@ -49,7 +49,7 @@ class AppFixtures extends Fixture
             $contact = $faker->name;
             $property = new Property();
             $property->setName($faker->company);
-            $property->setRole('ROLE_PROPERTY');
+            $property->setRole('5');
             $property->setEmail($faker->email);
             $property->setPassword($hashed);
             $property->setContactname($contact);
