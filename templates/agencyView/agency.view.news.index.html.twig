@@ -9,7 +9,7 @@
         <thead>
         <tr>
             <th>Date</th>
-            <th>Name</th>
+            <th>Title</th>
             <th>Property</th>
             <th>actions</th>
         </tr>
@@ -18,8 +18,8 @@
         {% for news in news %}
             <tr>
                 <td>{{ news.date ? news.date|date('d-m-Y') : '' }}</td>
-                <td>{{ news.name }}</td>
-                <td>{{ news.property }}</td>
+                <td>{{ news.title }}</td>
+                <td>{{ news.property.object }}</td>
                 <td>
                     <a href="{{ path('agency_view_show', {'id': news.id}) }}">show</a>
                 </td>

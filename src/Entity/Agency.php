@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AgencyRepository;
+use App\Entity\Role;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,10 +53,6 @@ class Agency
      */
     private $password;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class)
-     */
-    private $role;
 
     public function getId(): ?int
     {
@@ -86,17 +83,6 @@ class Agency
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
 
     public function getCountry(): ?string
     {
@@ -134,6 +120,18 @@ class Agency
         return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     public function getPassword(): ?string
     {
         return $this->password;
@@ -142,18 +140,6 @@ class Agency
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(Role $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }

@@ -34,12 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\OneToOne(targetEntity=Person::class, inversedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $person;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Role::class, inversedBy="users")
      */
     private $role;
@@ -135,18 +129,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPerson(): ?Person
-    {
-        return $this->person;
-    }
-
-    public function setPerson(Person $person): self
-    {
-        $this->person = $person;
 
         return $this;
     }

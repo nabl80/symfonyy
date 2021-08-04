@@ -19,10 +19,6 @@ class Property
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -45,35 +41,35 @@ class Property
     private $phone;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class)
-     */
-    private $role;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
-     public function __construct()
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $object;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $role;
+
+    /**
+     * @ORM\OneToMany(targetEntity=News::class, mappedBy="property")
+     */
+    private $news;
+
+    public function __construct()
     {
         $this->news = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -84,18 +80,6 @@ class Property
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }
@@ -153,6 +137,31 @@ class Property
         return $this;
     }
 
+
+    public function getObject(): ?string
+    {
+        return $this->object;
+    }
+
+    public function setObject(string $object): self
+    {
+        $this->object = $object;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
     /**
      * @return Collection|News[]
      */
@@ -165,7 +174,7 @@ class Property
     {
         if (!$this->news->contains($news)) {
             $this->news[] = $news;
-            $news->setProp($this);
+            $news->setProperty($this);
         }
 
         return $this;
@@ -175,11 +184,12 @@ class Property
     {
         if ($this->news->removeElement($news)) {
             // set the owning side to null (unless already changed)
-            if ($news->getProp() === $this) {
-                $news->setProp(null);
+            if ($news->getProperty() === $this) {
+                $news->setProperty(null);
             }
         }
 
         return $this;
     }
-}
+
+ }
