@@ -21,7 +21,7 @@ class AgencyFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('lt_LT');
+        $faker = Factory::create('ru_RU');
 
         for ($i = 0; $i < 5; ++$i) {
             $user = new User();

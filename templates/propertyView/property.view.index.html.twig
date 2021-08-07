@@ -20,9 +20,9 @@
                 <td>{{ news.date ? news.date|date('d-m-Y') : '' }}</td>
                 <td>{{ news.title}}</td>
                 <td>
-                    <a href="{{ path('news_show', {'id': news.id}) }}">show</a>
+                    <a href="{{ path('property_view_news_show', {'id': news.id}) }}">show</a>
                     <a href="{{ path('news_edit', {'id': news.id}) }}">edit</a>
-                    <a href="{{ path('agency_view_show', {'id': news.id}) }}">user view</a>
+                    <a href="{{ path('agency_view_news_show', {'id': news.id}) }}">user view</a>
                 </td>
             </tr>
         {% else %}

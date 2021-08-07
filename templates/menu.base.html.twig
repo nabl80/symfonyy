@@ -8,34 +8,18 @@
 
     <title>{% block title %}Let's Explore Symfony 4{% endblock %}</title>
     {% block stylesheets %}
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-          crossorigin="anonymous">
-{#    <link rel="stylesheet" href="{{ asset('css/custom-style.css') }}" />#}
-    <link rel="stylesheet" href="'css/custom-style.css'}" />
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+              integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+              crossorigin="anonymous">
+        {# <link rel="stylesheet" href="{{ asset('css/custom-style.css') }}" /> #}
+        <link rel="stylesheet" href="'css/custom-style.css'}"/>
     {% endblock %}
 
     {% block javascript %}
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        tinymce.init({
-        selector: 'textarea#basic-example',
-        // selector: 'text',
-        height: 500,
-        menubar: false,
-        plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table paste code help wordcount'
-        ],
-        toolbar: 'undo redo | formatselect | ' +
-        'bold italic backcolor | alignleft aligncenter ' +
-        'alignright alignjustify | bullist numlist outdent indent | ' +
-        'removeformat | help',
-        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-    });
 
     </script>
     {% endblock %}

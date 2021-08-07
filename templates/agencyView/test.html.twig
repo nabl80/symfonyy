@@ -1,0 +1,41 @@
+{% extends 'agency.view.base.html.twig' %}
+
+{% block title %}List of properties (agency view){% endblock %}
+
+{% block body %}
+    <h1>List of properties</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Object</th>
+            <th>Contact Person Name</th>
+            <th>Contact Person Surname</th>
+            <th>Contact Email</th>
+            <th>Phone</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for property in properties %}
+            <tr>
+                <td>{{ property.object }}</td>
+                <td>{{ property.contactName }}</td>
+                <td>{{ property.contactSurname }}</td>
+                <td>{{ property.contactEmail }}</td>
+                <td>{{ property.contactPhone }}</td>
+                <td>
+                    <a href="{{ path('agency_view_property_show', {'id': property.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        <div class="navigation">
+            {{ knp_pagination_render(properties) }}
+        </div>
+        </tbody>
+    </table>
+{% endblock %}

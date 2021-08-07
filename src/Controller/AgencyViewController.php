@@ -8,7 +8,9 @@ use App\Repository\NewsRepository;
 use App\Repository\PropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/aview')]
 class AgencyViewController extends AbstractController
@@ -30,6 +32,12 @@ class AgencyViewController extends AbstractController
             'properties' => $propertyRepository->findAll(),
         ]);
     }
+
+//        return $this->render('agencyView/test.html.twig', [
+//                'properties' => $propertyRepository->findAll(),]
+//        );
+
+
 
     #[Route('/properties/{id}', name: 'agency_view_property_show', methods: ['GET'])]
     public function show1(Property $property): Response

@@ -1,10 +1,7 @@
 {{ form_start(form) }}
-<div class="show">
-   DATE: {{ form_widget(form.date) }}</div>
-
+   DATE: {{ form_widget(form.date) }}
    IMAGE: {{ form_widget(form.image) }}
    TITLE: {{ form_widget(form.title) }}
-<div class="any"> TEXT: {{ form_widget(form.text) }}</div>
-
+   TEXT: {{ form_widget(form.text) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

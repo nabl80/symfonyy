@@ -15,8 +15,8 @@ class NewsType extends AbstractType
             ->add('date')
             ->add('image')
             ->add('title')
-            ->add('text')
-            ->add('property');
+            ->add('text');
+//            ->add('property');
     }
 
     public function configureOptions(OptionsResolver $resolver)

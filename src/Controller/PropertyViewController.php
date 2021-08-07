@@ -24,7 +24,7 @@ class PropertyViewController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name: 'news_create', methods: ['GET', 'POST'])]
+    #[Route('/news/create', name: 'property_news_create', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $news = new News();
@@ -36,12 +36,20 @@ class PropertyViewController extends AbstractController
 
             return $this->redirectToRoute('property_view_news_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('propertyView/property.create.news.html.twig', [
             'news' => $news,
             'form' => $form,
         ]);
     }
+
+    #[Route('/news/{id}', name: 'property_view_news_show', methods: ['GET'])]
+    public function show(News $news): Response
+    {
+        return $this->render('propertyView/property.view.news.show.html.twig', [
+            'news' => $news,
+        ]);
+    }
+
 
     #[Route('/agencies', name: 'property_view_agencies', methods: ['GET'])]
     public function index(AgencyRepository $agencyRepository): Response
@@ -52,7 +60,7 @@ class PropertyViewController extends AbstractController
     }
 
     #[Route('/agencies/{id}', name: 'property_view_agency_id', methods: ['GET'])]
-    public function show(Agency $agency): Response
+    public function show1(Agency $agency): Response
     {
         return $this->render('propertyView/property.view.agency.show.html.twig', [
             'agency' => $agency,
