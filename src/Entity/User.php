@@ -34,11 +34,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Role::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Administrator::class, inversedBy="user")
      */
-    private $role;
+    private $adm;
 
-     public function __construct()
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Property::class, inversedBy="user")
+     */
+    private $property;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Agency::class, inversedBy="user")
+     */
+    private $agency;
+
+    public function __construct()
     {
         $this->role = new ArrayCollection();
         $this->rights = new ArrayCollection();
@@ -56,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -64,7 +79,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -150,29 +165,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Role[]
-     */
-    public function getRole(): Collection
+
+    public function getAdm(): ?Administrator
+    {
+        return $this->adm;
+    }
+
+    public function setAdm(?Administrator $adm): self
+    {
+        $this->adm = $adm;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
-    public function addRole(Role $role): self
+    public function setRole(string $role): self
     {
-        if (!$this->role->contains($role)) {
-            $this->role[] = $role;
-        }
+        $this->role = $role;
 
         return $this;
     }
 
-    public function removeRole(Role $role): self
+    public function getProperty(): ?Property
     {
-        $this->role->removeElement($role);
+        return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
 
         return $this;
     }
 
+    public function getAgency(): ?Agency
+    {
+        return $this->agency;
+    }
+
+    public function setAgency(?Agency $agency): self
+    {
+        $this->agency = $agency;
+
+        return $this;
+    }
 
 }

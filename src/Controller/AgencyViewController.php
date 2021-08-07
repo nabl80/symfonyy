@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/agview')]
+#[Route('/aview')]
 class AgencyViewController extends AbstractController
 {
     #[Route('/', name: 'agency_view_index', methods: ['GET'])]
@@ -34,5 +34,12 @@ class AgencyViewController extends AbstractController
         return $this->render('agencyView/agency.view.property.index.html.twig', [
             'property' => $property,
         ]);
+    }
+
+    public function indexAction(){
+        $em = $this->get('doctrine')->getManager();
+        $sections = $sections = $this->getDoctrine() ->getRepository('AppBundle:ForumSection') ->findAll();
+
+        return $this->render('AppBundle:Default:index.html.twig', array('sections'=>$sections));
     }
 }

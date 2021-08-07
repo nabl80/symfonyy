@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Agency;
 use App\Entity\News;
-use App\Entity\Property;
+use App\Entity\User;
 use App\Form\NewsType;
 use App\Repository\AgencyRepository;
 use App\Repository\NewsRepository;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/propview')]
+#[Route('/pview')]
 class PropertyViewController extends AbstractController
 {
     #[Route('/', name: 'property_view_news_index', methods: ['GET'])]
@@ -56,6 +56,7 @@ class PropertyViewController extends AbstractController
     {
         return $this->render('propertyView/property.view.agency.show.html.twig', [
             'agency' => $agency,
+
         ]);
     }
 

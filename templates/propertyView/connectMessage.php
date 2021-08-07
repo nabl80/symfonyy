@@ -2,19 +2,20 @@
 
 $date = $_POST['date'];
 $image = $_POST['image'];
-$name = $_POST['name'];
+$title = $_POST['title'];
 $text = $_POST['text'];
-//$property = $_POST['property'];
+$property_id = $_POST['property_id'];
 
 $conn = new mysqli('localhost', 'devuser', 'devpass', 'csba_db');
 
 if (mysqli_connect_error()) {
     exit('Connect Error (' . mysqli_connect_errno() . ')' . mysqli_connect_error());
 } else {
-    $today = date();
+    $date = '28.07.2021';
+
     $sql =
-        "INSERT INTO news (date, image, name, text) 
-values ('$today','$image', '$name', '$text')";
+        "INSERT INTO news (date, image, title, text, property_id) 
+values ('$date','$image', '$title', '$text', '$property_id')";
 
     if ($conn->query($sql)) {
         echo 'New record is inserted successfully';

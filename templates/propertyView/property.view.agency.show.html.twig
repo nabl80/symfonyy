@@ -16,6 +16,12 @@
             <td>{{ agency.surname }}</td>
         </tr>
         <tr>
+            {% for user in agency.user %}
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
             <th>Agency</th>
             <td>{{ agency.agency }}</td>
         </tr>
@@ -26,10 +32,6 @@
         <tr>
             <th>Country</th>
             <td>{{ agency.country }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ agency.email }}</td>
         </tr>
 
         </tbody>

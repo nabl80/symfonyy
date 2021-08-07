@@ -83,4 +83,7 @@ class NewsController extends AbstractController
 
         return $this->redirectToRoute('news_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
 }

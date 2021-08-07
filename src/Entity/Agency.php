@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\AgencyRepository;
 use App\Entity\Role;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,14 +46,14 @@ class Agency
     private $country;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="agency")
      */
-    private $email;
+    private $user;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -120,26 +122,32 @@ class Agency
         return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
     {
-        return $this->email;
+        return $this->user;
     }
 
-    public function setEmail(string $email): self
+    public function addUser(User $user): self
     {
-        $this->email = $email;
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setAgency($this);
+        }
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function removeUser(User $user): self
     {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+        if ($this->user->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAgency() === $this) {
+                $user->setAgency(null);
+            }
+        }
 
         return $this;
     }

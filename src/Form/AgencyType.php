@@ -16,9 +16,9 @@ class AgencyType extends AbstractType
             ->add('surname')
             ->add('agency')
             ->add('website')
-            ->add('country')
-            ->add('email')
-            ->add('password');
+            ->add('country');
+//            ->add('email')
+//            ->add('password');
     }
 
     public function configureOptions(OptionsResolver $resolver)

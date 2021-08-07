@@ -21,30 +21,24 @@ class Property
 
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $password;
+    private $contactName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $contactname;
+    private $contactSurname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $contactemail;
+    private $contactEmail;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $phone;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
-
+    private $contactPhone;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -52,91 +46,30 @@ class Property
     private $object;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $role;
-
-    /**
      * @ORM\OneToMany(targetEntity=News::class, mappedBy="property")
      */
     private $news;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="property")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function __toString(): string
     {
-        return $this->name;
+        return $this->object;
     }
-
-    public function getContactname(): ?string
-    {
-        return $this->contactname;
-    }
-
-    public function setContactname(?string $contactname): self
-    {
-        $this->contactname = $contactname;
-
-        return $this;
-    }
-
-    public function getContactemail(): ?string
-    {
-        return $this->contactemail;
-    }
-
-    public function setContactemail(string $contactemail): self
-    {
-        $this->contactemail = $contactemail;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
 
     public function getObject(): ?string
     {
@@ -146,18 +79,6 @@ class Property
     public function setObject(string $object): self
     {
         $this->object = $object;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }
@@ -192,4 +113,80 @@ class Property
         return $this;
     }
 
- }
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getProperty() === $this) {
+                $user->setProperty(null);
+            }
+        }
+        return $this;
+    }
+
+    public function getContactName(): ?string
+    {
+        return $this->contactName;
+    }
+
+    public function setContactName(string $contactName): self
+    {
+        $this->contactName = $contactName;
+
+        return $this;
+    }
+
+    public function getContactSurname(): ?string
+    {
+        return $this->contactSurname;
+    }
+
+    public function setContactSurname(string $contactSurname): self
+    {
+        $this->contactSurname = $contactSurname;
+
+        return $this;
+    }
+
+    public function getContactEmail(): ?string
+    {
+        return $this->contactEmail;
+    }
+
+    public function setContactEmail(string $contactEmail): self
+    {
+        $this->contactEmail = $contactEmail;
+
+        return $this;
+    }
+
+    public function getContactPhone(): ?string
+    {
+        return $this->contactPhone;
+    }
+
+    public function setContactPhone(string $contactPhone): self
+    {
+        $this->contactPhone = $contactPhone;
+
+        return $this;
+    }
+}

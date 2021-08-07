@@ -4,18 +4,25 @@
 
 {% block body %}
 <h1>New message</h1>
-{# {{ include('news/_form.html.twig') }} #}
+{# {{ include('news/_form.html.twig') }}#}
 
-    <form action="./new/connectMessage.php" method="post">
-        <input type="text" name="image" placeholder="IMAGE"><br>
-        <input type="text" name="name" placeholder="MESSAGE NAME"><br>
+
+
+    <form action="{{ url('news_new') }}" method="post">
+        {{ form_row(form._token) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.image) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.text) }}
+        {{ form_row(form.property) }}
+{#        <input type="text" name="date" placeholder="date"><br>#}
+{#        <input type="text" name="image" placeholder="IMAGE"><br>#}
+{#        <input type="text" name="title" placeholder="MESSAGE NAME"><br>#}
 {#        <input type="text" name="property_id" placeholder="PROPERTY"><br>#}
-        <textarea rows="2" cols="100" id="basic-example" name="text" placeholder="ENTER YOUR TEXT">
-</textarea>
+{#        <textarea rows="2" cols="100" id="basic-example" name="text" placeholder="ENTER YOUR TEXT">#}
+{#</textarea>#}
         <input type="submit" class="hvr-rectangle-in" value="SEND">
     </form>
-    <div class="clearfix"></div>
-    </div>
 
 
     <a href="{{ path('news_index') }}">back to list</a>
