@@ -1,0 +1,38 @@
+{% extends 'agency.view.base.html.twig' %}
+
+{% block title %}Property show (agency view){% endblock %}
+
+{% block body %}
+    <h1>Property</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ property.id }}</td>
+        </tr>
+{#        <tr>#}
+{#            <th>Id</th>#}
+{#            <td>{{ property.object }}</td>#}
+{#        </tr>#}
+        <tr>
+            <th>Name</th>
+            <td>{{ property.contactName }}</td>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>{{ property.contactSurname }}</td>
+        </tr>
+        <tr>
+            <th>Contact</th>
+            <td>{{ property.contactEmail }}</td>
+        </tr>
+        <th>Phone</th>
+        <td>{{ property.contactPhone }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('agency_view_property_list') }}">back to list</a>
+
+{% endblock %}

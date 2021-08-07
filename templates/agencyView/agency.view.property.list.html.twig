@@ -1,14 +1,14 @@
-{% extends 'menu.base.html.twig' %}
+{% extends 'agency.view.base.html.twig' %}
 
-{% block title %}Property index{% endblock %}
+{% block title %}List of properties (agency view){% endblock %}
 
 {% block body %}
-    <h1>Property index</h1>
+    <h1>List of properties</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>Object</th>
             <th>Contact Person Name</th>
             <th>Contact Person Surname</th>
             <th>Contact Email</th>
@@ -19,14 +19,13 @@
         <tbody>
         {% for property in properties %}
             <tr>
-                <td>{{ property.id }}</td>
+                <td>{{ property.object }}</td>
                 <td>{{ property.contactName }}</td>
                 <td>{{ property.contactSurname }}</td>
                 <td>{{ property.contactEmail }}</td>
                 <td>{{ property.contactPhone }}</td>
                 <td>
-                    <a href="{{ path('property_show', {'id': property.id}) }}">show</a>
-                    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>
+                    <a href="{{ path('agency_view_property_show', {'id': property.id}) }}">show</a>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('property_new') }}">Create new</a>
 {% endblock %}
