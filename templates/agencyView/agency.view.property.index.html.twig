@@ -8,14 +8,16 @@
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>Property</th>
-
-
         </tr>
         </thead>
         <tbody>
+        {% set counter=0 %}
         {% for property in properties %}
+            {% set counter = counter +1 %}
             <tr>
+                {{ counter }}
                 <td>{{ property.object }}</td>
 
             </tr>

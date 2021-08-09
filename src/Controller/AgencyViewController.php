@@ -16,11 +16,20 @@ use Knp\Component\Pager\PaginatorInterface;
 class AgencyViewController extends AbstractController
 {
 
-
+    #[IsGranted('ROLE_AGENCY')]
     #[Route('/', name: 'agency_view_index', methods: ['GET'])]
     public function list(NewsRepository $newsRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_AGENCY');
         return $this->render('agencyView/agency.view.news.index.html.twig', [
+            'news' => $newsRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/sortascdate', name: 'agency_view_index_sort_date_asc', methods: ['GET'])]
+    public function listascDate(NewsRepository $newsRepository): Response
+    {
+        return $this->render('agencyView/agency.view.news.index.sortasc.date.html.twig', [
             'news' => $newsRepository->findAll(),
         ]);
     }
@@ -33,17 +42,11 @@ class AgencyViewController extends AbstractController
         ]);
     }
 
-//        return $this->render('agencyView/test.html.twig', [
-//                'properties' => $propertyRepository->findAll(),]
-//        );
-
-
-
-    #[Route('/properties/{id}', name: 'agency_view_property_show', methods: ['GET'])]
-    public function show1(Property $property): Response
+    #[Route('/properties/{id}', name: 'agency_view_property_news_read', methods: ['GET'])]
+    public function showNewsByProperty(PropertyRepository $propertyRepository): Response
     {
         return $this->render('agencyView/agency.view.property.show.html.twig', [
-            'property' => $property,
+            'properties' => $propertyRepository->findAll()
         ]);
     }
 

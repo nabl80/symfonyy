@@ -3,25 +3,20 @@
 {% block title %}News index (agency view){% endblock %}
 
 {% block body %}
-    <h1>News (default date desc)</h1>
-{#{% include 'dropdown.list.html.twig' %}#}
+    <h1>News (date asc)</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
-            <th><a href="/aview/sortascdate">Date</a></th>
+            <th>Date</th>
             <th>Title</th>
             <th>Property</th>
             <th>actions</th>
         </tr>
         </thead>
         <tbody>
-        {% set counter=0 %}
-        {% for news in news|sort ((a,b)=>b.date<=>a.date) %}
-            {% set counter = counter +1 %}
+        {% for news in news|sort ((a,b)=>a.date<=>b.date) %}
             <tr>
-                <td>{{ counter }}</td>
                 <td>{{ news.date ? news.date|date('d-m-Y') : '' }}</td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.property.object }}</td>

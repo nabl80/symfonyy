@@ -1,32 +1,30 @@
-{% extends 'agency.view.base.html.twig' %}
+{% extends 'admin.base.html.twig' %}
 
 {% block title %}News index (agency view){% endblock %}
 
 {% block body %}
-    <h1>News (default date desc)</h1>
-{#{% include 'dropdown.list.html.twig' %}#}
+    <h1>News</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
-            <th><a href="/aview/sortascdate">Date</a></th>
+            <th>Date</th>
             <th>Title</th>
             <th>Property</th>
             <th>actions</th>
         </tr>
         </thead>
         <tbody>
-        {% set counter=0 %}
-        {% for news in news|sort ((a,b)=>b.date<=>a.date) %}
-            {% set counter = counter +1 %}
+        {% for newsItem in news %}
             <tr>
-                <td>{{ counter }}</td>
                 <td>{{ news.date ? news.date|date('d-m-Y') : '' }}</td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.property.object }}</td>
                 <td>
-                    <a href="{{ path('agency_view_news_show', {'id': news.id}) }}">show</a>
+                    <a href="{{ path('agency_view_news_show', {'id': newsItem.id}) }}">show</a>
+                    <a href="{{ path('admin_news_edit', {'id': newsItem.id}) }}">edit</a>
+                    <a href="{{ path('admin_news_delete', {'id': newsItem.id}) }}">delete</a>
+
                 </td>
             </tr>
         {% else %}

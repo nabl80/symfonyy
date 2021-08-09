@@ -8,6 +8,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>Object</th>
             <th>Contact Person Name</th>
             <th>Contact Person Surname</th>
@@ -17,15 +18,20 @@
         </tr>
         </thead>
         <tbody>
-        {% for property in properties %}
+        {% set counter=0 %}
+        {% for property in properties|sort ((a,b)=>a.object<=>b.object) %}
+            {% set counter = counter +1 %}
             <tr>
+                <td> {{ counter }}</td>
                 <td>{{ property.object }}</td>
                 <td>{{ property.contactName }}</td>
                 <td>{{ property.contactSurname }}</td>
                 <td>{{ property.contactEmail }}</td>
                 <td>{{ property.contactPhone }}</td>
                 <td>
-                    <a href="{{ path('agency_view_property_show', {'id': property.id}) }}">show</a>
+{#                    {% for newsItem in news %}#}
+                    <a href="{{ path('agency_view_property_news_read', {'id': property.id}) }}">Read messages</a>
+{#                    {% endfor %}#}
                 </td>
             </tr>
         {% else %}

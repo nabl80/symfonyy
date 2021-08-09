@@ -26,6 +26,12 @@
         </div>
     {% endif %}
 
+    {% if is_granted('ROLE_AGENCY') %}
+        <div class="mb-3">
+            Esi Agentas
+        </div>
+    {% endif %}
+
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail_id">Email</label>
     <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>

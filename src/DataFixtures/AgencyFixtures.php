@@ -21,9 +21,25 @@ class AgencyFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('ru_RU');
+        $faker = Factory::create();
+        $user1 = new User();
+        $agency1 = new Agency();
+        $firstName = 'Abra';
+        $lastName = 'Kebabra';
+        $email = strtolower($firstName . '.' . $lastName . '@' . $faker->domainName);
+        $agency1->setName($firstName);
+        $agency1->setSurname($lastName);
+        $agency1->setCountry($faker->country);
+        $agency1->setAgency($faker->company);
+        $agency1->setWebsite($faker->url);
+        $user1->setAgency($agency1);
+        $user1->setEmail($email);
+        $user1->setRoles(['ROLE_AGENCY']);
+        $user1->setPassword($this->passwordHasher->hashPassword($user1, 'kebabas'));
+        $manager->persist($agency1);
+        $manager->persist($user1);
 
-        for ($i = 0; $i < 5; ++$i) {
+        for ($i = 0; $i < 35; ++$i) {
             $user = new User();
             $agency = new Agency();
             $firstName = $faker->firstName;
@@ -33,7 +49,6 @@ class AgencyFixtures extends Fixture
             $agency->setSurname($lastName);
             $agency->setCountry($faker->country);
             $agency->setAgency($faker->company);
-//            $agency->setWebsite($faker->url);
             $agency->setWebsite($faker->url);
             $user->setAgency($agency);
             $user->setEmail($email);

@@ -1,0 +1,16 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <h1>Create new User</h1>
+
+    {{ include('adminView/_form.html.twig') }}
+
+
+    <a href="{{ path('admin_view_users') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

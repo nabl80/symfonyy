@@ -1,0 +1,9 @@
+Search news by property:
+<select name="propertyNews">
+    <option>Choose</option>
+
+
+    {% for newsItem in news if  %}
+        <option>{{ newsItem.property.object }}</option>
+    {% endfor %}
+</select>

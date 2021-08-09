@@ -8,20 +8,22 @@
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>Date</th>
             <th>Name</th>
             <th>actions</th>
         </tr>
         </thead>
         <tbody>
-        {% for news in news %}
+        {% set counter=0 %}
+        {% for news in news|sort ((a,b)=>b.date<=>a.date) %}
+            {% set counter = counter +1 %}
             <tr>
-                {# <td>{{ news.id }}</td> #}
+                <td>{{ counter }}</td>
                 <td>{{ news.date ? news.date|date('d-m-Y') : '' }}</td>
-                <td>{{ news.title}}</td>
+                <td>{{ news.title }}</td>
                 <td>
-                    <a href="{{ path('property_view_news_show', {'id': news.id}) }}">show</a>
-                    <a href="{{ path('news_edit', {'id': news.id}) }}">edit</a>
+                    <a href="{{ path('property_news_edit', {'id': news.id}) }}">edit</a>
                     <a href="{{ path('agency_view_news_show', {'id': news.id}) }}">user view</a>
                 </td>
             </tr>
@@ -33,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('news_create') }}">Create new</a>
+    <a href="{{ path('property_news_create') }}">Create new</a>
 {% endblock %}
