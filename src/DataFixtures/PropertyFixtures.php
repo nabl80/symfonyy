@@ -22,6 +22,23 @@ class PropertyFixtures extends Fixture
     {
         $faker = Factory::create();
 
+        $user100 = new User();
+        $property100 = new Property();
+        $firstName = 'property';
+        $lastName = 'property';
+        $email = strtolower($firstName . '.' . $lastName . '@test.lt');
+        $property100->setObject($faker->company);
+        $property100->setContactName($firstName);
+        $property100->setContactSurname($lastName);
+        $property100->setContactEmail($email);
+        $property100->setContactPhone($faker->phoneNumber);
+        $user100->setProperty($property100);
+        $user100->setEmail($email);
+        $user100->setPassword($this->passwordHasher->hashPassword($user100, 'property'));
+        $user100->setRoles(['ROLE_PROPERTY']);
+        $manager->persist($property100);
+        $manager->persist($user100);
+
 
         for ($i = 0; $i < 10; ++$i) {
             $user = new User();

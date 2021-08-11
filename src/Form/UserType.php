@@ -18,14 +18,14 @@ class UserType extends AbstractType
             ->add('password')
             ->add('email');
 
-        $builder->get('roles')->addModelTransformer(new CallbackTransformer(
-            function ($rolesAsArray) {
-                return implode(', ', $rolesAsArray);
-            },
-            function ($rolesAsString) {
-                return explode(', ', $rolesAsString);
-            }
-        ));
+//        $builder->get('roles')->addModelTransformer(new CallbackTransformer(
+//            function ($rolesAsArray) {
+//                return implode(', ', $rolesAsArray);
+//            },
+//            function ($rolesAsString) {
+//                return explode(', ', $rolesAsString);
+//            }
+//        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

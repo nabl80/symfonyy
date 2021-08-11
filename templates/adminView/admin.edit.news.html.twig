@@ -1,0 +1,13 @@
+{% extends 'admin.view.base.html.twig' %}
+
+{% block title %}Edit News{% endblock %}
+
+{% block body %}
+    <h1>Edit News</h1>
+
+    {{ include('propertyView/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('property_view_news_index') }}">back to list</a>
+
+    {{ include('propertyView/_delete_news_form.html.twig') }}
+{% endblock %}

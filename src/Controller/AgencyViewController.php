@@ -26,14 +26,6 @@ class AgencyViewController extends AbstractController
         ]);
     }
 
-    #[Route('/sortascdate', name: 'agency_view_index_sort_date_asc', methods: ['GET'])]
-    public function listascDate(NewsRepository $newsRepository): Response
-    {
-        return $this->render('agencyView/agency.view.news.index.sortasc.date.html.twig', [
-            'news' => $newsRepository->findAll(),
-        ]);
-    }
-
     #[Route('/properties', name: 'agency_view_property_list', methods: ['GET'])]
     public function index(PropertyRepository $propertyRepository): Response
     {
@@ -43,15 +35,21 @@ class AgencyViewController extends AbstractController
     }
 
     #[Route('/properties/{id}', name: 'agency_view_property_news_read', methods: ['GET'])]
-    public function showNewsByProperty(PropertyRepository $propertyRepository): Response
+    public function show(Request $request, NewsRepository $newsRepository): Response
     {
-        return $this->render('agencyView/agency.view.property.show.html.twig', [
-            'properties' => $propertyRepository->findAll()
+        $url = $request->getPathInfo();
+        $id = substr($url, -3);
+        $news = $newsRepository->findBy(
+            ['property' => $id]
+        );
+        return $this->render('agencyView/agency.view.property.show.news.html.twig', [
+            'news' => $news
         ]);
     }
 
-    #[Route('/news/{id}', name: 'agency_view_news_show', methods: ['GET'])]
-    public function show(News $news): Response
+    #[
+        Route('/news/{id}', name: 'agency_view_news_show', methods: ['GET'])]
+    public function show2(News $news): Response
     {
         return $this->render('agencyView/agency.view.news.show.html.twig', [
             'news' => $news,

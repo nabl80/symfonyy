@@ -1,6 +1,12 @@
 {% extends 'admin.base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}
+    <div class="mb-3">
+        You are logged in as {{ app.user.email }}<br> <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+{% endblock %}
+
+
 
 {% block body %}
     <h1>Create new User</h1>

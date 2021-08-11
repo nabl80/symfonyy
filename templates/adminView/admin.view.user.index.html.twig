@@ -1,13 +1,10 @@
 {% extends 'admin.base.html.twig' %}
 
 {% block title %}
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.email }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+    <div class="mb-3">
+        You are logged in as {{ app.user.email }}<br> <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
 {% endblock %}
-
 {% block body %}
     <h1>User list</h1>
     <a href="{{ path('admin_add_user_new') }}">Create new</a>

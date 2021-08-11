@@ -7,6 +7,7 @@ use App\Entity\Property;
 use App\Entity\User;
 use App\Entity\Agency;
 use App\Form\AgencyType;
+use App\Form\NewsType;
 use App\Form\UserType;
 use App\Manager\AgencyManager;
 use App\Repository\NewsRepository;
@@ -134,13 +135,23 @@ class AdminVewController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('property_view_news_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_view_all_news', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('propertyView/property.edit.news.html.twig', [
+        return $this->renderForm('adminView/admin.edit.news.html.twig', [
             'news' => $news,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/allnews/{id}', name: 'admin_news_delete', methods: ['POST'])]
+    public function deleteNews(Request $request, News $news): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
+            $this->manager->delete($news);
+        }
+
+        return $this->redirectToRoute('admin_view_all_news', [], Response::HTTP_SEE_OTHER);
     }
 
 }

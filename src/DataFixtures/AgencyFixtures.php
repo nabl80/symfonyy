@@ -24,9 +24,9 @@ class AgencyFixtures extends Fixture
         $faker = Factory::create();
         $user1 = new User();
         $agency1 = new Agency();
-        $firstName = 'Abra';
-        $lastName = 'Kebabra';
-        $email = strtolower($firstName . '.' . $lastName . '@' . $faker->domainName);
+        $firstName = 'agency';
+        $lastName = 'agency';
+        $email = strtolower($firstName . '.' . $lastName . '@test.com');
         $agency1->setName($firstName);
         $agency1->setSurname($lastName);
         $agency1->setCountry($faker->country);
@@ -35,7 +35,7 @@ class AgencyFixtures extends Fixture
         $user1->setAgency($agency1);
         $user1->setEmail($email);
         $user1->setRoles(['ROLE_AGENCY']);
-        $user1->setPassword($this->passwordHasher->hashPassword($user1, 'kebabas'));
+        $user1->setPassword($this->passwordHasher->hashPassword($user1, 'agency'));
         $manager->persist($agency1);
         $manager->persist($user1);
 

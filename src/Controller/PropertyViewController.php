@@ -20,7 +20,7 @@ class PropertyViewController extends AbstractController
     public function __construct(private NewsManager $manager)
     {
     }
-
+    #[IsGranted('ROLE_PROPERTY')]
     #[Route('/', name: 'property_view_news_index', methods: ['GET'])]
     public function list(NewsRepository $newsRepository): Response
     {

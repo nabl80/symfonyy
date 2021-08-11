@@ -1,6 +1,6 @@
 {% extends 'agency.view.base.html.twig' %}
 
-{% block title %}List of properties (agency view){% endblock %}
+{% block title %}List of properties{% endblock %}
 
 {% block body %}
     <h1>List of properties</h1>
@@ -14,7 +14,7 @@
             <th>Contact Person Surname</th>
             <th>Contact Email</th>
             <th>Phone</th>
-            <th>actions</th>
+            <th>Read</th>
         </tr>
         </thead>
         <tbody>
@@ -26,12 +26,10 @@
                 <td>{{ property.object }}</td>
                 <td>{{ property.contactName }}</td>
                 <td>{{ property.contactSurname }}</td>
-                <td>{{ property.contactEmail }}</td>
+                <td><a href="mailto:{{ property.contactEmail }}">{{ property.contactEmail }}</a></td>
                 <td>{{ property.contactPhone }}</td>
                 <td>
-{#                    {% for newsItem in news %}#}
                     <a href="{{ path('agency_view_property_news_read', {'id': property.id}) }}">Read messages</a>
-{#                    {% endfor %}#}
                 </td>
             </tr>
         {% else %}

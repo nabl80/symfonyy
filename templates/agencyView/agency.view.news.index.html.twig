@@ -1,19 +1,18 @@
 {% extends 'agency.view.base.html.twig' %}
 
-{% block title %}News index (agency view){% endblock %}
+{% block title %}All news{% endblock %}
 
 {% block body %}
-    <h1>News (default date desc)</h1>
-{#{% include 'dropdown.list.html.twig' %}#}
+    <h1>All news</h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>#</th>
-            <th><a href="/aview/sortascdate">Date</a></th>
+            <th>Date</th>
             <th>Title</th>
             <th>Property</th>
-            <th>actions</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
